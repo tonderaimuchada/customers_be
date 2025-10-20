@@ -21,4 +21,28 @@ public class Customer {
     private String phoneNr;
     private String email;
     private List<Order> ordersList = new ArrayList<>();
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getPhoneNr() {
+        return phoneNr;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public List<Order> getOrdersList() {
+        return ordersList;
+    }
 }

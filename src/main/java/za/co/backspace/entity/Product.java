@@ -16,4 +16,8 @@ public class Product {
     private String name;
     private String description;
     private String price;
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
 }

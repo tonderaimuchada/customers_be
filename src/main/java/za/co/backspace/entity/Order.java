@@ -12,9 +12,21 @@ import jakarta.persistence.Id;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private Integer orderId;
     private String orderReferenceNumber;
     private Integer customerId;
     private Integer productId;
     private Integer quantity;
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setOrderReferenceNumber(String orderReferenceNumber) {
+        this.orderReferenceNumber = orderReferenceNumber;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
 }

@@ -18,6 +18,10 @@ public class Order {
     private Integer productId;
     private Integer quantity;
 
+    public Integer getOrderId() {
+        return orderId;
+    }
+
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }

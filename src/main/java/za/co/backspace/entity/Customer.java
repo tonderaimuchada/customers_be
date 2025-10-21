@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +17,15 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerId;
+    @NonNull
     private String name;
+    @NonNull
     private String surname;
+    @NonNull
     private String phoneNr;
+    @NonNull
     private String email;
+    @NonNull
     private List<Order> ordersList = new ArrayList<>();
 
     public Integer getCustomerId() {

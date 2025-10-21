@@ -1,8 +1,6 @@
 package za.co.backspace.controller;
 
-import jakarta.annotation.PostConstruct;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.springframework.lang.NonNull;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import za.co.backspace.entity.Customer;
 import za.co.backspace.entity.Order;
@@ -24,37 +22,37 @@ public class CustomerController {
     }
 
     @PostMapping
-    public Customer addCustomer(@NonNull @RequestBody Customer customer){
+    public Customer addCustomer(@Validated @RequestBody Customer customer){
         return customerService.addCustomer(customer);
     }
 
     @PutMapping
-    public Customer updateCustomer(@NonNull @RequestBody Customer customer){
+    public Customer updateCustomer(@Validated @RequestBody Customer customer){
         return customerService.updateCustomer(customer);
     }
 
     @DeleteMapping
-    public void deleteCustomer(@NonNull @RequestBody Customer customer){
+    public void deleteCustomer(@Validated @RequestBody Customer customer){
         customerService.deleteCustomer(customer);
     }
 
     @GetMapping
-    public List<Order> getOrdersForCustomer(@NonNull @RequestBody Customer customer){
+    public List<Order> getOrdersForCustomer(@Validated @RequestBody Customer customer){
         return customerService.getOrdersForCustomer(customer.getCustomerId());
     }
 
     @PostMapping
-    public Order addOrder(@NonNull @RequestBody Order order, Integer customerId){
+    public Order addOrder(@Validated @RequestBody Order order, Integer customerId){
         return customerService.addOrder(order, customerId);
     }
 
     @PutMapping
-    public Order updateOrder(@NonNull @RequestBody Order order){
+    public Order updateOrder(@Validated @RequestBody Order order){
         return customerService.updateOrder(order, order.getOrderId());
     }
 
     @DeleteMapping
-    public void deleteOrder(@NonNull @RequestBody Order order){
+    public void deleteOrder(@Validated @RequestBody Order order){
         customerService.deleteOrder(order.getOrderId());
     }
 }

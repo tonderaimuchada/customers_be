@@ -1,14 +1,15 @@
 package za.co.backspace.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * @author Tonderai Muchada on 20/10/2025 - 10:30 AM
  */
 @Entity
+@Table(
+        name = "order",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"orderReferenceNumber"})
+)
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

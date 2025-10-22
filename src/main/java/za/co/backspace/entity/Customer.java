@@ -1,9 +1,6 @@
 package za.co.backspace.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;
@@ -13,6 +10,10 @@ import java.util.List;
  * @author Tonderai Muchada on 20/10/2025 - 10:14 AM
  */
 @Entity
+@Table(
+        name = "customer",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"name", "surname"})
+)
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,15 +1,16 @@
 package za.co.backspace.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
 /**
  * @author Tonderai Muchada on 20/10/2025 - 11:21 AM
  */
 @Entity
+@Table(
+        name = "product",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"name"})
+)
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

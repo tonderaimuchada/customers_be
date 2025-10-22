@@ -56,7 +56,7 @@ public class CustomerService {
         String orderReference = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + "-" +
                 String.format("%04d", new Random().nextInt(10000));
 
-        if (orderReferenceList.contains(orderReference)) throw new  RuntimeException("Order already exists");
+        if (orderReferenceList.contains(orderReference)) throw new RuntimeException("Order already exists");
 
         orderReferenceList.add(orderReference);
         order.setOrderReferenceNumber(orderReference);

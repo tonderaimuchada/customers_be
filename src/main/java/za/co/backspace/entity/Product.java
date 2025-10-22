@@ -3,6 +3,8 @@ package za.co.backspace.entity;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
+import java.math.BigDecimal;
+
 /**
  * @author Tonderai Muchada on 20/10/2025 - 11:21 AM
  */
@@ -20,7 +22,7 @@ public class Product {
     @NonNull
     private String description;
     @NonNull
-    private String price;
+    private BigDecimal price;
 
     public Integer getProductId() {
         return productId;

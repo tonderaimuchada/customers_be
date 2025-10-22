@@ -1,6 +1,7 @@
 package za.co.backspace.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import za.co.backspace.entity.Customer;
@@ -19,11 +20,13 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('administrator', 'customer')")
     public List<Customer> getCustomers(){
         return customerService.findAll();
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('customer')")
     public Customer addCustomer(@Validated @RequestBody Customer customer){
         return customerService.addCustomer(customer);
     }
@@ -39,16 +42,19 @@ public class CustomerController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('administrator', 'customer')")
     public List<Order> getOrdersForCustomer(@Validated @RequestBody Customer customer){
         return customerService.getOrdersForCustomer(customer.getCustomerId());
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('customer')")
     public Order addOrder(@Validated @RequestBody Order order, Integer customerId){
         return customerService.addOrder(order, customerId);
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('customer')")
     public Order updateOrder(@Validated @RequestBody Order order){
         return customerService.updateOrder(order, order.getOrderId());
     }

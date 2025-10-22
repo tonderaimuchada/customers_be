@@ -9,6 +9,7 @@ import za.co.backspace.repository.OderRepository;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -21,6 +22,8 @@ public class CustomerService {
     private CustomerRepository customerRepository;
     @Autowired
     private OderRepository orderRepository;
+
+    List<String> orderReferenceList =  new ArrayList<>();
 
     public List<Customer> findAll() {
         return customerRepository.findAll();
@@ -52,6 +55,10 @@ public class CustomerService {
         order.setCustomerId(customerId);
         String orderReference = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + "-" +
                 String.format("%04d", new Random().nextInt(10000));
+
+        if (orderReferenceList.contains(orderReference)) throw new  RuntimeException("Order already exists");
+
+        orderReferenceList.add(orderReference);
         order.setOrderReferenceNumber(orderReference);
         return orderRepository.save(order);
     }
